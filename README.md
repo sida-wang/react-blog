@@ -3,10 +3,10 @@ Just a simple blog to allow me to record anything of interest as I continue lear
 
 ## Stack
 Using a PERN stack
-Postgres
-Express
-React
-Node
+- Postgres
+- Express
+- React
+- Node
 
 ## Status
 Currently have a basic shell of an application which allows me to navigate to an editor page to submit a post - currently not functioning. 
