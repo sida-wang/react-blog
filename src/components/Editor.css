@@ -1,0 +1,5 @@
+.markdown-preview {
+    resize: vertical;
+    overflow: auto;
+    height: 250px;
+}
