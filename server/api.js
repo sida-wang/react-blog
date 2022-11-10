@@ -26,7 +26,6 @@ app.post("/posts", async(req, res) => {
 
 //Read Post
 
-//Read All Posts
 
 //Update Post
 
