@@ -2,18 +2,18 @@ CREATE DATABASE react-blog;
 
 CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
-    title TEXT,
+    title TEXT NOT NULL, 
     content TEXT,
-    slug TEXT,
-    created_at TIMESTAMPTZ,
-    modified_at TIMESTAMPTZ
+    slug TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    modified_at TIMESTAMPTZ NOT NULL
 );
 
 CREATE TABLE tags(
     id SERIAL PRIMARY KEY,
-    title TEXT,
+    title TEXT NOT NULL,
     meta_title TEXT,
-    slug TEXT
+    slug TEXT NOT NULL
 );
 
 CREATE TABLE post_tags(
