@@ -1,37 +1,30 @@
 import Post from './Post'
-import { Route, Routes } from 'react-router-dom'
-
-const posts = [
-  {
-    id: 1,
-    tags: ["tag1", "tag2"],
-    title: "Title",
-    text: "Blah Blah Blah",
-    date_created: "Date 1",
-    date_modified: "Date 2",
-  },
-  {
-    id: 2,
-    tags: ["tag1", "tag2"],
-    title: "Title",
-    text: "text body",
-    date_created: "Date 1",
-    date_modified: "Date 2",
-  },
-  {
-    id: 3,
-    tags: ["tag1", "tag2"],
-    title: "Title",
-    text: "text body",
-    date_created: "Date 1",
-    date_modified: "Date 2",
-  }
-]
+import { useEffect, useState } from 'react'
 
 const Body = () => {
+
+  const[posts, setPosts] = useState([]);
+
+  const getPosts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/posts/fetch/all");
+      const jsonData = await response.json();
+      console.log(jsonData);
+      setPosts(jsonData);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+  
+
   return (
     <main>
-      {posts.map((post) => (<Post title={post.title} text={post.text} />))}  
+      {posts.map((post) => (<Post id={post.id} title={post.title} text={post.content} key={post.id} />))}  
     </main>
   )
 }
