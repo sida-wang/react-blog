@@ -9,8 +9,9 @@ import {
   Route,
 } from "react-router-dom";
 import ErrorPage from "./error-page"
-import Editor from "./components/Editor"
-import Body from "./components/Body"
+import PostEditor from "./components/PostEditor"
+import PostsLayout from './components/PostsLayout';
+import PostsContainer from './components/PostsContainer';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +20,40 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "editor",
-        element: <Editor />,
+        path: "",
+        element: <PostsLayout />,
+        children: [
+          {
+            path: "",
+            element: <PostsContainer />,
+          },
+        ]
+      },
+      {//diferentiate between new and edit:/id by changing what they fetch and their onSubmit
+        path: "new",
+        element: <PostEditor />,
       },
       {
-        path: "",
-        element: <Body />,
+        path: "edit/:id",
+        element: <PostEditor />,
+      },
+      {
+        path: "posts",
+        element: <PostsLayout />,
+        children: [
+          {//differentiate between id and the others using a loader function
+            path: "",
+            element: <PostsContainer />,
+          },
+          {
+            path: "all",
+            element: <PostsContainer />,
+          },
+          {
+            path: ":id",
+            element: <PostsContainer />,
+          },
+        ]
       },
     ],
   },
