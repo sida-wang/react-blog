@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Post = ({ id, title, text }) => {
   return (
-    <Link to={"/posts/"+id}>
+    <Link to={"/posts/"+id} className="text-decoration-none">
     <article className='border p-2 rounded '>
         <h3>{title}</h3>
         <ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
