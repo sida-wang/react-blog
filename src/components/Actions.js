@@ -17,7 +17,7 @@ const Actions = ({ isSinglePost }) => {
     if (isSinglePost) {
         return (
             <>
-                <Link to={`/new`} className = "btn btn-primary" role="button">New Post</Link>
+                <Link to={`/newpost`} className = "btn btn-primary" role="button">New Post</Link>
                 <Link to={`edit`} className = "btn btn-warning" role="button">Edit Post</Link>
                 <Button className = "btn btn-danger" onClick={onDelete}>Delete Post</Button>
             </>
@@ -25,7 +25,8 @@ const Actions = ({ isSinglePost }) => {
     }
     return (
         <>
-            <Link to={`new`} className = "btn btn-primary" role="button">New Post</Link>
+            <Link to={`newpost`} className = "btn btn-primary" role="button">New Post</Link>
+            <Link to={`newtag`} className = "btn btn-primary" role="button">New Tag</Link>
         </>
     )
     
