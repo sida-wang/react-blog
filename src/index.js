@@ -12,6 +12,9 @@ import ErrorPage from "./error-page"
 import PostEditor from "./components/PostEditor"
 import PostsLayout from './components/PostsLayout';
 import PostsContainer from './components/PostsContainer';
+import { allPostsLoader, postsIdLoader } from './util/loaders';
+import EditPostLayout from './components/EditPostLayout';
+import NewPostLayout from './components/NewPostLayout';
 
 const router = createBrowserRouter([
   {
@@ -22,36 +25,40 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <PostsLayout />,
-        children: [
-          {
-            path: "",
-            element: <PostsContainer />,
-          },
-        ]
+        loader: allPostsLoader,
       },
       {//diferentiate between new and edit:/id by changing what they fetch and their onSubmit
         path: "new",
-        element: <PostEditor />,
-      },
-      {
-        path: "edit/:id",
-        element: <PostEditor />,
+        element: <NewPostLayout />,
       },
       {
         path: "posts",
-        element: <PostsLayout />,
         children: [
           {//differentiate between id and the others using a loader function
             path: "",
-            element: <PostsContainer />,
+            element: <PostsLayout />,
+            loader: allPostsLoader,
           },
           {
             path: "all",
-            element: <PostsContainer />,
+            element: <PostsLayout />,
+            loader: allPostsLoader,
           },
           {
+            //figure out how to put edit and delete button into action section of posts layout 
             path: ":id",
-            element: <PostsContainer />,
+            children: [
+              {
+                path: "",
+                element: <PostsLayout isSinglePost={true} />,
+                loader: postsIdLoader,
+              },
+              {
+                path: "edit",
+                element: <EditPostLayout />,
+                loader: postsIdLoader,
+              }
+            ]
           },
         ]
       },
