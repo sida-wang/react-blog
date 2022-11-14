@@ -1,4 +1,4 @@
-import PostEditor from "./PostEditor";
+import Editor from "../components/Editor";
 import { useNavigate, useParams, useLoaderData } from "react-router-dom";
 import { updatePost } from "../util/apiCalls";
 
@@ -15,7 +15,7 @@ const EditPostLayout = () => {
     }
 
   return (
-    <PostEditor defaultFormData={postsData} onSubmitHandler={onSubmitHandler}/>
+    <Editor defaultFormData={postsData} onSubmitHandler={onSubmitHandler} type="post"/>
   )
 }
 

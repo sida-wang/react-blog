@@ -1,6 +1,6 @@
-import Filter from './Filter'
-import Actions from './Actions'
-import PostsContainer from './PostsContainer'
+import Filter from '../components/Filter'
+import Actions from '../components/Actions'
+import PostsContainer from '../components/PostsContainer'
 import { useLoaderData } from 'react-router-dom'
 
 const PostsLayout = ({ isSinglePost=false }) => {

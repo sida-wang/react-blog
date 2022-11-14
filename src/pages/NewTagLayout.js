@@ -1,8 +1,8 @@
-import PostEditor from "./PostEditor"
+import Editor from "../components/Editor"
 import { createPost } from "../util/apiCalls";
 import { useNavigate } from "react-router-dom";
 
-const NewPostLayout = () => {
+const NewTagLayout = () => {
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
@@ -13,10 +13,9 @@ const NewPostLayout = () => {
         navigate(`/posts/${jsonData.id}`);
     }
 
-
   return (
-    <PostEditor defaultFormData={{title: "", slug: "", content: ""}} onSubmitHandler={onSubmitHandler}/>
+    <Editor defaultFormData={{title: "", slug: "", content: ""}} onSubmitHandler={onSubmitHandler} type="tag"/>
   )
 }
 
-export default NewPostLayout
+export default NewTagLayout

@@ -9,12 +9,13 @@ import {
   Route,
 } from "react-router-dom";
 import ErrorPage from "./error-page"
-import PostEditor from "./components/PostEditor"
-import PostsLayout from './components/PostsLayout';
+import PostEditor from "./components/Editor"
+import PostsLayout from './pages/PostsLayout';
 import PostsContainer from './components/PostsContainer';
 import { allPostsLoader, postsIdLoader } from './util/loaders';
-import EditPostLayout from './components/EditPostLayout';
-import NewPostLayout from './components/NewPostLayout';
+import EditPostLayout from './pages/EditPostLayout';
+import NewPostLayout from './pages/NewPostLayout';
+import NewTagLayout from './pages/NewTagLayout';
 
 const router = createBrowserRouter([
   {
@@ -27,14 +28,18 @@ const router = createBrowserRouter([
         element: <PostsLayout />,
         loader: allPostsLoader,
       },
-      {//diferentiate between new and edit:/id by changing what they fetch and their onSubmit
-        path: "new",
+      {
+        path: "newpost",
         element: <NewPostLayout />,
+      },
+      {
+        path: "newtag",
+        element: <NewTagLayout />,
       },
       {
         path: "posts",
         children: [
-          {//differentiate between id and the others using a loader function
+          {
             path: "",
             element: <PostsLayout />,
             loader: allPostsLoader,
@@ -45,7 +50,6 @@ const router = createBrowserRouter([
             loader: allPostsLoader,
           },
           {
-            //figure out how to put edit and delete button into action section of posts layout 
             path: ":id",
             children: [
               {
