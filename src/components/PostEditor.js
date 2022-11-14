@@ -6,53 +6,33 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useState } from 'react';
 import './Editor.css';
-import { useNavigate } from 'react-router-dom'
 
-const PostEditor = ( { id= null }) => {
-    const[markdown, setMarkdown] = useState();
+const PostEditor = ({ defaultFormData, onSubmitHandler}) => {
+    const[markdown, setMarkdown] = useState(defaultFormData.content);
 
     const onTextChange = (e) => {
         setMarkdown(e.target.value);
-    }  
-
-    const navigate = useNavigate();
-    
-    const onSubmitForm = async (e) => {
-        e.preventDefault();
-        try {
-            const body =  { title: e.target.title.value, slug: e.target.slug.value, markdown: e.target.markdown.value };
-            const response = await fetch("http://localhost:5000/posts/create", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body)
-            });
-            const jsonData = await response.json();
-            navigate(`/posts/${jsonData.id}`);
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
+    } 
 
     return (
-        <Form className="p-3" onSubmit={onSubmitForm}>
+        <Form className="p-3" onSubmit={onSubmitHandler}>
             <Row>
                 <Col>
                 <Form.Group className="mb-3" controlId="formTitle">
                         <label htmlFor="postTitle"><h4>Title</h4></label>
-                        <input className="form-control form-control-lg" type="text" id="postTitle" name="title" />
+                        <input className="form-control form-control-lg" type="text" id="postTitle" name="title" defaultValue={defaultFormData.title} />
                 </Form.Group>
                 </Col>
                 <Col xs={4}>
                 <Form.Group className="mb-3" controlId="formSlug">
                         <label htmlFor="slug"><h4>Slug</h4></label>
-                        <input className="form-control form-control-lg" type="text" id="slug" name="slug" />
+                        <input className="form-control form-control-lg" type="text" id="slug" name="slug" defaultValue={defaultFormData.slug} />
                 </Form.Group>
                 </Col>                
             </Row>
             <Form.Group className="mb-3" controlId="formTextBody">
                 <label htmlFor="rawTextArea"><h4>Raw Text</h4></label>
-                <textarea className="form-control" id="rawTextArea" rows='10' name="markdown" onChange={onTextChange}>{markdown}</textarea>
+                <textarea className="form-control" id="rawTextArea" rows='10' name="markdown" onChange={onTextChange} value={markdown}>{markdown}</textarea>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formPostPreview">
                 <label><h4>Preview</h4></label>
