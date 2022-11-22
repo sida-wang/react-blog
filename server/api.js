@@ -58,6 +58,19 @@ app.get("/posts/fetch/:id", async(req, res) => {
     }
 });
 
+//Read Posts that match a given Tag ID
+app.get("/posts/fetch/bytag/:id", async(req, res) => {
+    try {
+        const { id: id } = req.params;
+        const queryText = 'SELECT p.* FROM posts p INNER JOIN post_tags pt on p.id = pt.post_id and pt.tag_id = $1';
+        const queryres = await pool.query(queryText, [id]);
+        res.json(queryres.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});
+
 
 //Update Post
 app.put("/posts/update/:id", async(req, res) => {

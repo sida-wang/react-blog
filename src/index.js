@@ -12,7 +12,7 @@ import ErrorPage from "./error-page"
 import PostEditor from "./components/Editor"
 import PostsLayout from './pages/PostsLayout';
 import PostsContainer from './components/PostsContainer';
-import { allPostsLoader, postsIdLoader, getTagsLoader, tagsIdLoader } from './util/loaders';
+import { allPostsLoader, postsIdLoader, getTagsLoader, tagsIdLoader, postsByTagLoader } from './util/loaders';
 import EditPostLayout from './pages/EditPostLayout';
 import NewPostLayout from './pages/NewPostLayout';
 import NewTagLayout from './pages/NewTagLayout';
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <TagsLayout />,
-            loader: allPostsLoader,
+            loader: postsByTagLoader,
           },
           {
             path: "edit",

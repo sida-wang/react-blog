@@ -1,4 +1,4 @@
-import { getPostsAll, getPostsById, getTagsAll, getTagsById } from "./apiCalls"; 
+import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag } from "./apiCalls"; 
 
 //Loaders act as wrappers to marry loader inputs to api call inputs
 
@@ -16,4 +16,8 @@ export async function allTagsLoader () {
 
 export async function tagsIdLoader ({ params }) {
     return getTagsById(params.id);
+}
+
+export async function postsByTagLoader ({ params }) {
+    return getPostsByTag(params.id);
 }

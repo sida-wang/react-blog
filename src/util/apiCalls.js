@@ -18,6 +18,16 @@ export async function getPostsById(id) {
     }
 }
 
+export async function getPostsByTag(id) {
+    const response = await fetch(`http://localhost:5000/posts/fetch/bytag/${id}`);
+    if (response.ok) { 
+        return response.json();
+    }
+    else {
+        console.log(response.status, response.statusText); 
+    }
+}
+
 export async function deletePostById(id) {
       const response = await fetch(`http://localhost:5000/posts/delete/${id}`, {
         method: "DELETE"
