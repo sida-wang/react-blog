@@ -1,7 +1,5 @@
 import Post from './Post'
-import { useLoaderData } from 'react-router-dom';
-import { getAllPosts } from '../util/apiCalls';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const PostsContainer = ({ postsData }) => {
 

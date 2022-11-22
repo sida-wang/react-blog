@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import './Filter.css'
 import { getTagsAll } from '../util/apiCalls'
