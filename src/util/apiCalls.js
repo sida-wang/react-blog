@@ -106,6 +106,17 @@ export async function getTagsById(id) {
     }
 }
 
+
+export async function getTagsByPostId(id) {
+    const response = await fetch(`http://localhost:5000/tags/fetch/bypost/${id}`);
+    if (response.ok) {
+        return response.json();
+    }
+    else {
+        console.log( response.status, response.statusText);
+    }
+}
+
 export async function updateTag(id, body) {
     const response = await fetch(`http://localhost:5000/tags/update/${id}`, {
         method: "PUT",

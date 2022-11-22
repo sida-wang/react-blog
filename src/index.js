@@ -6,18 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 import ErrorPage from "./error-page"
-import PostEditor from "./components/Editor"
 import PostsLayout from './pages/PostsLayout';
-import PostsContainer from './components/PostsContainer';
-import { allPostsLoader, postsIdLoader, getTagsLoader, tagsIdLoader, postsByTagLoader } from './util/loaders';
+import { allPostsLoader, postsIdLoader, tagsIdLoader, postsByTagLoader, EditPostLoader } from './util/loaders';
 import EditPostLayout from './pages/EditPostLayout';
 import NewPostLayout from './pages/NewPostLayout';
 import NewTagLayout from './pages/NewTagLayout';
 import TagsLayout from './pages/TagsLayout';
 import EditTagLayout from './pages/EditTagLayout'
+import TagSelection from './components/TagSelection'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +23,9 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      { path: "test",
+      element: <TagSelection />,
+    },
       {
         path: "",
         element: <PostsLayout />,
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
               {
                 path: "edit",
                 element: <EditPostLayout />,
-                loader: postsIdLoader,
+                loader: EditPostLoader,
               }
             ]
           },

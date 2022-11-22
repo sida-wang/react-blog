@@ -103,7 +103,6 @@ app.delete("/posts/delete/:id", async(req, res) => {
 //Create Tag
 app.post("/tags/create", async(req, res) => {
     try {
-        console.log(req.body);
         const { title:title, metatitle: metatitle, slug:slug } = req.body;
         const queryText = 'INSERT INTO tags (title, meta_title, slug) VALUES($1, $2, $3) RETURNING *';
         const newTag = await pool.query(queryText, [title, metatitle, slug]);
@@ -136,6 +135,20 @@ app.get("/tags/fetch/:id", async(req, res) => {
         res.send(err.message);
     }
 })
+
+//Get Tags by Post id
+app.get("/tags/fetch/bypost/:id", async(req, res) => {
+    try {
+        const { id: id } = req.params;
+        const queryText = 'SELECT t.* FROM tags t INNER JOIN post_tags pt on t.id = pt.tag_id and pt.post_id = $1';
+        const queryres = await pool.query(queryText, [id]);
+        res.json(queryres.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+})
+
 
 //Update Tag
 app.put("/tags/update/:id", async(req, res) => {

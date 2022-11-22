@@ -1,11 +1,15 @@
 import Editor from "../components/Editor";
 import { useNavigate, useParams, useLoaderData } from "react-router-dom";
 import { updatePost } from "../util/apiCalls";
+import TagSelection from "../components/TagSelection";
+import { useState } from "react";
 
 const EditPostLayout = () => {
     const params = useParams();
-    const postsData = useLoaderData()[0];
+    const postsData = useLoaderData()['postData'][0];
     const navigate = useNavigate();
+    const [selected, setSelected] = useState(useLoaderData()['selectedTags'].map((tag) => tag.id));
+    const tags = useLoaderData()['tags']
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -15,7 +19,10 @@ const EditPostLayout = () => {
     }
 
   return (
-    <Editor defaultFormData={postsData} onSubmitHandler={onSubmitHandler} type="post"/>
+    <>
+      <TagSelection tags={tags} selected={selected} setSelected={setSelected} />
+      <Editor defaultFormData={postsData} onSubmitHandler={onSubmitHandler} type="post"/>
+    </>
   )
 }
 
