@@ -5,12 +5,14 @@ import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag, getT
 export async function allPostsLoader () {
     let ret = {};
     ret['posts'] = await getPostsAll();
+    ret['filters'] = await getTagsAll();
     return ret
 }
 
 export async function PostsLayoutLoader ({ params }) {
     let ret = {};
     ret['posts'] = await getPostsById(params.id);
+    ret['filters'] = await getTagsByPostId(params.id);
     return ret
 }
 

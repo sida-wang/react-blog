@@ -3,17 +3,7 @@ import './Filter.css'
 import { getTagsAll } from '../util/apiCalls'
 import { useState, useEffect } from 'react'
 
-const Filter = () => {
-
-  const [filters, setFilters] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const jsonData = await getTagsAll();
-      setFilters(jsonData);
-      })();
-    }
-  ,[]);
+const Filter = ({ filters }) => {
 
   return (
     <div className='Filter'>
