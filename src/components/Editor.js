@@ -6,9 +6,12 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useState } from 'react';
 import './Editor.css';
+import { useNavigate } from 'react-router-dom';
 
 const Editor = ({ defaultFormData, onSubmitHandler, type}) => {
     const[markdown, setMarkdown] = useState(type === "post" ? defaultFormData.content : defaultFormData.meta_title);
+
+    const navigate = useNavigate(); 
 
     const onTextChange = (e) => {
         setMarkdown(e.target.value);
@@ -42,7 +45,10 @@ const Editor = ({ defaultFormData, onSubmitHandler, type}) => {
                 <ReactMarkdown id="preview" children={markdown} remarkPlugins={[remarkGfm]} />
                 </article>
             </Form.Group>
-            <Button type="submit" className="btn btn-primary" >Submit</Button>
+            <div className='buttons'>
+            <Button type="submit" className="btn bg-red m-1 border border-0" >Submit</Button>
+            <Button type="button" onClick={() => navigate(-1)} className="btn bg-grey m-1 border border-0" >Cancel</Button>
+            </div>
         </Form>
   )
 }

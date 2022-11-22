@@ -23,25 +23,25 @@ const Actions = ({ type }) => {
     if (type === "post") {
         return (
             <div className='actions'>
-                <Link to={`/newpost`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Post</Link>
-                <Link to={`edit`} className = "btn btn-warning actions-item m-1 bg-salmon border border-0" role="button">Edit Post</Link>
-                <Button className = "btn btn-danger actions-item m-1 bg-grey border border-0" onClick={onDeletePost}>Delete Post</Button>
+                <Link to={`/newpost`} className = "btn bg-red actions-item m-1 border border-0" role="button">New Post</Link>
+                <Link to={`edit`} className = "btn actions-item m-1 bg-salmon border border-0" role="button">Edit Post</Link>
+                <Button className = "btn actions-item m-1 bg-grey border border-0" onClick={onDeletePost}>Delete Post</Button>
             </div>
         )
     }
     if (type === "tag") {
         return (
             <div className='actions'>
-                <Link to={`/newtag`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
-                <Link to={`edit`} className = "btn btn-warning actions-item m-1 bg-salmon border border-0" role="button">Edit Tag</Link>
-                <Button className = "btn btn-danger actions-item m-1 bg-grey border border-0" onClick={onDeleteTag}>Delete Tag</Button>
+                <Link to={`/newtag`} className = "btn bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
+                <Link to={`edit`} className = "btn actions-item m-1 bg-salmon border border-0" role="button">Edit Tag</Link>
+                <Button className = "btn actions-item m-1 bg-grey border border-0" onClick={onDeleteTag}>Delete Tag</Button>
             </div>
         )
     }
     return (
         <div className='actions'>
-            <Link to={`newpost`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Post</Link>
-            <Link to={`newtag`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
+            <Link to={`newpost`} className = "btn bg-red actions-item m-1 border border-0" role="button">New Post</Link>
+            <Link to={`newtag`} className = "btn bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
         </div>
     )
     

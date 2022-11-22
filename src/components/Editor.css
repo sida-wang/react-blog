@@ -4,6 +4,11 @@
     height: 250px;
 }
 
-.bg-sepia {
+.bg-sepia, .bg-sepia:focus {
     background-color: #EAE7DC;
+}
+
+.buttons {
+    display: flex;
+    justify-content: end;
 }

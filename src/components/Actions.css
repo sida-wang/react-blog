@@ -14,7 +14,7 @@
     color: black;
 }
 
-.bg-salmon:hover {
+.bg-salmon:hover, .bg-salmon:active {
     background-color: #e98074cc;
     color: black;
 }
@@ -24,7 +24,7 @@
     color: black;
 }
 
-.bg-red:hover {
+.bg-red:hover, .bg-red:active {
     background-color: #e8594fcc;
     color: black;
 }
@@ -34,7 +34,7 @@
     color: black;
 }
 
-.bg-grey:hover {
+.bg-grey:hover, .bg-grey:active {
     background-color: #8E8D8Acc;
     color: black;
 }
