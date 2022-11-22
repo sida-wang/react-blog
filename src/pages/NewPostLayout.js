@@ -15,7 +15,10 @@ const NewPostLayout = () => {
 
 
   return (
+    <>
+    <div></div>
     <Editor defaultFormData={{title: "", slug: "", content: ""}} onSubmitHandler={onSubmitHandler} type="post" />
+    </>
   )
 }
 

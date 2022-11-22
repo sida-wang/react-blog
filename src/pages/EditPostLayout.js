@@ -23,8 +23,8 @@ const EditPostLayout = () => {
 
   return (
     <>
-      <TagSelection tags={tags} selected={selected} setSelected={setSelected} />
-      <Editor defaultFormData={postsData} onSubmitHandler={onSubmitHandler} type="post"/>
+        <TagSelection tags={tags} selected={selected} setSelected={setSelected} />
+        <Editor defaultFormData={postsData} onSubmitHandler={onSubmitHandler} type="post"/>
     </>
   )
 }

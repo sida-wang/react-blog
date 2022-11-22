@@ -1,0 +1,11 @@
+.post{
+    overflow: hidden;
+    border: 3px;
+    border-style: solid;
+    border-color: #D8C3A5;
+}
+
+a .post{
+    min-height: 200px;
+    max-height: 30vh;
+}

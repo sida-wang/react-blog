@@ -13,9 +13,13 @@ const TagsLayout = ({ type="tag" }) => {
 
   return (
     <>
-    <Actions type={ type }/>
+    <div className='sidebar'>
+      <Actions type={ type }/>
+    </div>
+    <div>
     <TagSummary body = {tagData[0]}/>
     <PostsContainer postsData={ postData } />
+    </div>
     </>
   )
 }

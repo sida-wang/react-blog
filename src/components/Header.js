@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = ({ title, subtitle }) => {
   return (
     <>
-    <header className='m-2 h1'>
+    <header className='p-5 mb-0 h1 text-red'>
       <Link to={'/'} className='nav-link'>
           {title}
       </Link>

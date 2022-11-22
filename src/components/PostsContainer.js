@@ -33,7 +33,9 @@ const PostsContainer = ({ postsData, type }) => {
   else {
     return (
       <main>
-        {posts.map((post) => (<Link to={"/posts/"+post.id} className="text-decoration-none"><Post id={post.id} title={post.title} text={post.content} key={post.id} /></Link>))}  
+        {posts.map((post) => (<Link to={"/posts/"+post.id} className="text-decoration-none text-dark-grey">
+                                <Post className="multi-posts" id={post.id} title={post.title} text={post.content} key={post.id} />
+                              </Link>))}  
       </main>
     )
   }

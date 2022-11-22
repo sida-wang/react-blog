@@ -6,9 +6,12 @@ import { useState, useEffect } from 'react'
 const Filter = ({ filters }) => {
 
   return (
-    <div className='Filter'>
-        {filters.map((tag) => (<Link to={`/tags/${tag.id}`} key={tag.id} role="button" className="btn btn-secondary">{tag.title}</Link>))}  
+    <>
+    <h5 className='mt-4 text-center'>Tags</h5>
+    <div className='filter'>
+        {filters.map((tag) => (<Link to={`/tags/${tag.id}`} key={tag.id} role="button" className="btn btn-secondary filter-item">{tag.title}</Link>))}  
     </div>
+    </>
   )
 }
 

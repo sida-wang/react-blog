@@ -15,7 +15,10 @@ const EditTagLayout = () => {
     }
 
   return (
+    <>
+    <div></div>
     <Editor defaultFormData={tagData} onSubmitHandler={onSubmitHandler} type="tag"/>
+    </>
   )
 }
 

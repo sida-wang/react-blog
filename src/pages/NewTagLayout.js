@@ -13,7 +13,10 @@ const NewTagLayout = () => {
     }
 
   return (
+    <>
+    <div></div>
     <Editor defaultFormData={{title: "", slug: "", content: ""}} onSubmitHandler={onSubmitHandler} type="tag"/>
+    </>
   )
 }
 

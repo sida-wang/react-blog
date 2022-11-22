@@ -1,0 +1,11 @@
+.tag-selector-bar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flex-item{
+    flex: 0;
+    width: 70%;
+}

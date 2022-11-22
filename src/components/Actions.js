@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { deletePostById, deleteTagById } from '../util/apiCalls';
 import { useParams, useNavigate } from 'react-router-dom';
+import './Actions.css'
 
 const Actions = ({ type }) => {
 
@@ -21,27 +22,27 @@ const Actions = ({ type }) => {
 
     if (type === "post") {
         return (
-            <>
-                <Link to={`/newpost`} className = "btn btn-primary" role="button">New Post</Link>
-                <Link to={`edit`} className = "btn btn-warning" role="button">Edit Post</Link>
-                <Button className = "btn btn-danger" onClick={onDeletePost}>Delete Post</Button>
-            </>
+            <div className='actions'>
+                <Link to={`/newpost`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Post</Link>
+                <Link to={`edit`} className = "btn btn-warning actions-item m-1 bg-salmon border border-0" role="button">Edit Post</Link>
+                <Button className = "btn btn-danger actions-item m-1 bg-grey border border-0" onClick={onDeletePost}>Delete Post</Button>
+            </div>
         )
     }
     if (type === "tag") {
         return (
-            <>
-                <Link to={`/newtag`} className = "btn btn-primary" role="button">New Tag</Link>
-                <Link to={`edit`} className = "btn btn-warning" role="button">Edit Tag</Link>
-                <Button className = "btn btn-danger" onClick={onDeleteTag}>Delete Tag</Button>
-            </>
+            <div className='actions'>
+                <Link to={`/newtag`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
+                <Link to={`edit`} className = "btn btn-warning actions-item m-1 bg-salmon border border-0" role="button">Edit Tag</Link>
+                <Button className = "btn btn-danger actions-item m-1 bg-grey border border-0" onClick={onDeleteTag}>Delete Tag</Button>
+            </div>
         )
     }
     return (
-        <>
-            <Link to={`newpost`} className = "btn btn-primary" role="button">New Post</Link>
-            <Link to={`newtag`} className = "btn btn-primary" role="button">New Tag</Link>
-        </>
+        <div className='actions'>
+            <Link to={`newpost`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Post</Link>
+            <Link to={`newtag`} className = "btn btn-primary bg-red actions-item m-1 border border-0" role="button">New Tag</Link>
+        </div>
     )
     
 }
