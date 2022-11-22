@@ -144,4 +144,19 @@ export async function deleteTagById(id) {
     }
     
 }
-//TODO getPostsbyTag
+
+
+export async function updatePostTags(id, body) {
+    const response = await fetch(`http://localhost:5000/posts/linktags/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    });
+    if (response.ok) {
+        const jsonData = await response.json();
+        console.log(`Added: ${jsonData.added}; Deleted: ${jsonData.deleted};`)
+    }
+    else {
+        console.log( response.status, response.statusText);
+    }
+}

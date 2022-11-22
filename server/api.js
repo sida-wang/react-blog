@@ -7,15 +7,18 @@ const cors = require("cors")
 app.use(cors());
 app.use(express.json()); //gives access to req.body
 
-// get is a method that takes a get request with the first argument being a route, and the second argument being a 
-// function which express calls a HANDLER
-app.get('/', (req, res) => {
-    res.send('Hello World! test woops');
-})
-
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Blog API listening on port ${port}`);
 });
+
+//Useful functions
+function difference(setA, setB) {
+    const _difference = new Set(setA);
+    for (const elem of setB) {
+      _difference.delete(elem);
+    }
+    return _difference;
+  }
 
 //ROUTES
 
@@ -172,6 +175,26 @@ app.delete("/tags/delete/:id", async(req, res) => {
         const queryText = 'DELETE FROM tags WHERE id = $1 RETURNING *';
         const deletedPost = await pool.query(queryText, [id]);
         res.json(deletedPost.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});
+
+//Link tag to post
+app.post("/posts/linktags/:id", async(req, res) => {
+    try {
+        const{ id:id } = req.params;
+        const { original:original, newtags: newtags} = req.body;
+        const toDel = difference(new Set(original), new Set(newtags));
+        const toAdd = difference(new Set(newtags), new Set(original));
+        for (tagid of toDel) {
+            await pool.query('DELETE FROM post_tags WHERE post_id = $1 and tag_id = $2', [id, tagid]);
+        }
+        for (tagid of toAdd) {
+            await pool.query('INSERT INTO post_tags (post_id, tag_id) VALUES($1, $2)', [id, tagid]);
+        }
+        res.json({added: Array.from(toAdd), deleted: Array.from(toDel)});
     } catch (err) {
         console.error(err.message);
         res.send(err.message);
