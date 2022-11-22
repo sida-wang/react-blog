@@ -8,14 +8,13 @@ import { useState } from 'react';
 import './Editor.css';
 
 const Editor = ({ defaultFormData, onSubmitHandler, type}) => {
-    const[markdown, setMarkdown] = useState(defaultFormData.content);
+    const[markdown, setMarkdown] = useState(type === "post" ? defaultFormData.content : defaultFormData.meta_title);
 
     const onTextChange = (e) => {
         setMarkdown(e.target.value);
     } 
 
     const labels = type === "post" ? {id: "postTitle", text:"Post Title"} : {id: "tagTitle", text: "Tag"}
-    console.log(type);
 
     return (
         <Form className="p-3" onSubmit={onSubmitHandler}>
