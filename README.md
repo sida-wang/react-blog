@@ -9,10 +9,14 @@ Using a PERN stack
 - Node
 
 ## Status
-Currently have a basic shell of an application which allows me to navigate to an editor page to submit a post - currently not functioning. 
-The navigator page has a preview box utilising github flavoured markdown. 
+Basic posting functionality is complete which allows for creation, updating and deletion of posts using github flavoured markdown.
+The ability to create and edit tags has been setup but still needs the ability to link to posts.
+Express API is mostly setup equipped to deal with CRUD requests as required, endpoints are still being created based on functionality required by the app. 
 
 ## Todo 
-- Setup the express API to allow for CRUD requests from the blog. 
-- Tie in functionality from the blog to the API. 
-- Add in ability to create tags, tag posts, and sort posts by tags. 
+- Add in the ability to delete tags
+- Add ability to link tags to posts and sort posts by tag
+- Identify most appropriate way of removing hyperlink when viewing a single post (Likely modifying the render return for a single post)
+- Update aethestics using CSS
+- Gate all modifying functionality behind an admin login (i.e. hide buttons and disable endpoint access)
+- Deploy to personal website
