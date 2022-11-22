@@ -12,10 +12,12 @@ import ErrorPage from "./error-page"
 import PostEditor from "./components/Editor"
 import PostsLayout from './pages/PostsLayout';
 import PostsContainer from './components/PostsContainer';
-import { allPostsLoader, postsIdLoader } from './util/loaders';
+import { allPostsLoader, postsIdLoader, getTagsLoader, tagsIdLoader } from './util/loaders';
 import EditPostLayout from './pages/EditPostLayout';
 import NewPostLayout from './pages/NewPostLayout';
 import NewTagLayout from './pages/NewTagLayout';
+import TagsLayout from './pages/TagsLayout';
+import EditTagLayout from './pages/EditTagLayout'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,21 @@ const router = createBrowserRouter([
         element: <NewTagLayout />,
       },
       {
+        path: "tags/:id",
+        children: [
+          {
+            path: "",
+            element: <TagsLayout />,
+            loader: allPostsLoader,
+          },
+          {
+            path: "edit",
+            element: <EditTagLayout />,
+            loader: tagsIdLoader,
+          }
+        ]
+      },
+      {
         path: "posts",
         children: [
           {
@@ -54,7 +71,7 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "",
-                element: <PostsLayout isSinglePost={true} />,
+                element: <PostsLayout type="post" />,
                 loader: postsIdLoader,
               },
               {
