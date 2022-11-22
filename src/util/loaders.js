@@ -40,3 +40,9 @@ export async function EditPostLoader({ params }) {
     ret['tags'] = await getTagsAll();
     return ret
 }
+
+export async function NewPostsLoader() {
+    let ret = {};
+    ret['tags'] = await getTagsAll();
+    return ret
+}
