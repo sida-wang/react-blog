@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from "./error-page"
 import PostsLayout from './pages/PostsLayout';
-import { allPostsLoader, postsIdLoader, tagsIdLoader, postsByTagLoader, EditPostLoader } from './util/loaders';
+import { allPostsLoader, PostsLayoutLoader, EditTagLoader, EditPostLoader, TagsLayoutLoader } from './util/loaders';
 import EditPostLayout from './pages/EditPostLayout';
 import NewPostLayout from './pages/NewPostLayout';
 import NewTagLayout from './pages/NewTagLayout';
@@ -45,12 +45,12 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <TagsLayout />,
-            loader: postsByTagLoader,
+            loader: TagsLayoutLoader,
           },
           {
             path: "edit",
             element: <EditTagLayout />,
-            loader: tagsIdLoader,
+            loader: EditTagLoader,
           }
         ]
       },
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
               {
                 path: "",
                 element: <PostsLayout type="post" />,
-                loader: postsIdLoader,
+                loader: PostsLayoutLoader,
               },
               {
                 path: "edit",

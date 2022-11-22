@@ -4,7 +4,7 @@ import { updateTag } from "../util/apiCalls";
 
 const EditTagLayout = () => {
     const params = useParams();
-    const tagData = useLoaderData()[0];
+    const tagData = useLoaderData()['tag'][0];
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {

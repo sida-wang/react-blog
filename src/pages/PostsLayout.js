@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom'
 
 const PostsLayout = ({ type }) => {
 
-  const postsData = useLoaderData().map((post) => Object.assign(post,{created_at: new Date(post.created_at), modified_at: new Date(post.modified_at)}));
+  const postsData = useLoaderData()['posts'].map((post) => Object.assign(post,{created_at: new Date(post.created_at), modified_at: new Date(post.modified_at)}));
 
 
   return (

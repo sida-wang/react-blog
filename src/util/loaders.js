@@ -3,26 +3,34 @@ import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag, getT
 //Loaders act as wrappers to marry loader inputs to api call inputs
 
 export async function allPostsLoader () {
-    return getPostsAll();
+    let ret = {};
+    ret['posts'] = await getPostsAll();
+    return ret
 }
 
-export async function postsIdLoader ({ params }) {
-    return getPostsById(params.id);
+export async function PostsLayoutLoader ({ params }) {
+    let ret = {};
+    ret['posts'] = await getPostsById(params.id);
+    return ret
 }
 
 export async function allTagsLoader () {
     return getTagsAll();
 }
 
-export async function tagsIdLoader ({ params }) {
-    return getTagsById(params.id);
+export async function EditTagLoader ({ params }) {
+    let ret = {};
+    ret['tag'] = await getTagsById(params.id);
+    return ret
 }
 
-export async function postsByTagLoader ({ params }) {
-    return getPostsByTag(params.id);
+export async function TagsLayoutLoader ({ params }) {
+    let ret = {};
+    ret['postsData'] = await getPostsByTag(params.id);
+    ret['tag'] = await getTagsById(params.id);
+    return ret
 }
 
-//
 export async function EditPostLoader({ params }) {
     let ret = {};
     ret['postData'] = await getPostsById(params.id);
