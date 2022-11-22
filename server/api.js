@@ -137,3 +137,17 @@ app.put("/tags/update/:id", async(req, res) => {
         res.send(err.message);
     }
 });
+
+
+//Delete Tag
+app.delete("/tags/delete/:id", async(req, res) => {
+    try {
+        const { id: id } = req.params;
+        const queryText = 'DELETE FROM tags WHERE id = $1 RETURNING *';
+        const deletedPost = await pool.query(queryText, [id]);
+        res.json(deletedPost.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});

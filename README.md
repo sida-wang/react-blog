@@ -14,7 +14,6 @@ The ability to create and edit tags has been setup but still needs the ability t
 Express API is mostly setup equipped to deal with CRUD requests as required, endpoints are still being created based on functionality required by the app. 
 
 ## Todo 
-- Add in the ability to delete tags
 - Add ability to link tags to posts and sort posts by tag
 - Identify most appropriate way of removing hyperlink when viewing a single post (Likely modifying the render return for a single post)
 - Update aethestics using CSS

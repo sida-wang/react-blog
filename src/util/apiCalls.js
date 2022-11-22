@@ -23,7 +23,7 @@ export async function deletePostById(id) {
         method: "DELETE"
       });
       if (response.ok) {
-        console.log( 'Successfully deleted message' );
+        console.log( 'Successfully deleted post' );
       }
       else {
         console.log( response.status, response.statusText);
@@ -110,4 +110,17 @@ export async function updateTag(id, body) {
     }
 }
 
+
+export async function deleteTagById(id) {
+    const response = await fetch(`http://localhost:5000/tags/delete/${id}`, {
+      method: "DELETE"
+    });
+    if (response.ok) {
+      console.log( 'Successfully deleted tag' );
+    }
+    else {
+      console.log( response.status, response.statusText);
+    }
+    
+}
 //TODO getPostsbyTag

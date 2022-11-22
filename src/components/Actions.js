@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import { deletePostById } from '../util/apiCalls';
+import { deletePostById, deleteTagById } from '../util/apiCalls';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Actions = ({ type }) => {
@@ -9,8 +9,13 @@ const Actions = ({ type }) => {
 
     const navigate = useNavigate(); 
 
-    const onDelete = async () => {
+    const onDeletePost = async () => {
         await deletePostById(params.id);
+        navigate('/');
+    }
+
+    const onDeleteTag = async () => {
+        await deleteTagById(params.id);
         navigate('/');
     }
 
@@ -19,7 +24,7 @@ const Actions = ({ type }) => {
             <>
                 <Link to={`/newpost`} className = "btn btn-primary" role="button">New Post</Link>
                 <Link to={`edit`} className = "btn btn-warning" role="button">Edit Post</Link>
-                <Button className = "btn btn-danger" onClick={onDelete}>Delete Post</Button>
+                <Button className = "btn btn-danger" onClick={onDeletePost}>Delete Post</Button>
             </>
         )
     }
@@ -28,7 +33,7 @@ const Actions = ({ type }) => {
             <>
                 <Link to={`/newtag`} className = "btn btn-primary" role="button">New Tag</Link>
                 <Link to={`edit`} className = "btn btn-warning" role="button">Edit Tag</Link>
-                <Button className = "btn btn-danger" onClick={onDelete}>Delete Tag</Button>
+                <Button className = "btn btn-danger" onClick={onDeleteTag}>Delete Tag</Button>
             </>
         )
     }
