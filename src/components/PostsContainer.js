@@ -1,7 +1,8 @@
 import Post from './Post'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const PostsContainer = ({ postsData }) => {
+const PostsContainer = ({ postsData, type }) => {
 
   const [posts, setPosts] = useState(postsData.sort((a,b) => b.created_at - a.created_at));
   // const [sortProperty, setSortProperty] = useState("created_at");
@@ -22,12 +23,20 @@ const PostsContainer = ({ postsData }) => {
   // })();
   //   }
   // ,[]);
-
+  if (type === "post") {
   return (
     <main>
       {posts.map((post) => (<Post id={post.id} title={post.title} text={post.content} key={post.id} />))}  
     </main>
   )
+  }
+  else {
+    return (
+      <main>
+        {posts.map((post) => (<Link to={"/posts/"+post.id} className="text-decoration-none"><Post id={post.id} title={post.title} text={post.content} key={post.id} /></Link>))}  
+      </main>
+    )
+  }
 }
 
 

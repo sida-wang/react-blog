@@ -13,7 +13,7 @@ const PostsLayout = ({ type }) => {
     <>
     <Filter filters = {filters} />
     <Actions type={ type }/>
-    <PostsContainer postsData={ postsData } />
+    <PostsContainer postsData={ postsData } type={type} />
     </>
   )
 }
