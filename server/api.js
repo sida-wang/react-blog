@@ -39,7 +39,6 @@ app.get("/posts/fetch/all", async(req, res) => {
         const queryText = 'SELECT * FROM posts';
         const queryres = await pool.query(queryText);
         res.json(queryres.rows);
-        console.log("fetched");
     } catch (err) {
         console.error(err.message);
         res.send(err.message);
@@ -88,3 +87,53 @@ app.delete("/posts/delete/:id", async(req, res) => {
 });
 
 //Tags stuff
+//Create Tag
+app.post("/tags/create", async(req, res) => {
+    try {
+        console.log(req.body);
+        const { title:title, metatitle: metatitle, slug:slug } = req.body;
+        const queryText = 'INSERT INTO tags (title, meta_title, slug) VALUES($1, $2, $3) RETURNING *';
+        const newTag = await pool.query(queryText, [title, metatitle, slug]);
+        res.json(newTag.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});
+
+//Get Tags
+app.get("/tags/fetch", async(req, res) => {
+    try {
+        const tags = await pool.query("SELECT * FROM tags");
+        res.json(tags.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+})
+
+//Get Tags by id
+app.get("/tags/fetch/:id", async(req, res) => {
+    try {
+        const { id: id } = req.params;
+        const tags = await pool.query("SELECT * FROM tags where id = $1", [id]);
+        res.json(tags.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+})
+
+//Update Tag
+app.put("/tags/update/:id", async(req, res) => {
+    try {
+        const { id: id } = req.params;
+        const { title: title, metatitle: metatitle, slug: slug } = req.body;
+        const queryText = 'UPDATE tags SET (title, meta_title, slug) = (SELECT $1, $2, $3) WHERE id = $4 RETURNING *';
+        const updatedPost = await pool.query(queryText, [title, metatitle, slug, id]);
+        res.json(updatedPost.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});
