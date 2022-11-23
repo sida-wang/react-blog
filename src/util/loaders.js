@@ -1,8 +1,4 @@
 import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag, getTagsByPostId } from "./apiCalls"; 
-import { AuthContext } from "../App";
-import { useContext } from "react";
-import { redirect } from "react-router-dom";
-import { getSuggestedQuery } from "@testing-library/react";
 
 //Loaders act as wrappers to marry loader inputs to api call inputs
 

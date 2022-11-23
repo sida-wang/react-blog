@@ -1,5 +1,5 @@
 import Editor from "../components/Editor"
-import { createPost, updatePostTags, checkToken } from "../util/apiCalls";
+import { createPost, updatePostTags } from "../util/apiCalls";
 import { useNavigate, useLoaderData } from "react-router-dom";
 import TagSelection from "../components/TagSelection"
 import { useState } from "react";

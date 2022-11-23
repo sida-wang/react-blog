@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 import './Filter.css'
-import { getTagsAll } from '../util/apiCalls'
-import { useState, useEffect } from 'react'
 
 const Filter = ({ filters }) => {
 
