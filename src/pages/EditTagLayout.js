@@ -2,6 +2,7 @@ import Editor from "../components/Editor";
 import { useNavigate, useParams, useLoaderData } from "react-router-dom";
 import { updateTag } from "../util/apiCalls";
 
+
 const EditTagLayout = () => {
     const params = useParams();
     const tagData = useLoaderData()['tag'][0];

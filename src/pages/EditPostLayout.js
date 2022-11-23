@@ -1,8 +1,9 @@
 import Editor from "../components/Editor";
 import { useNavigate, useParams, useLoaderData, useOutletContext, redirect } from "react-router-dom";
-import { updatePost, updatePostTags } from "../util/apiCalls";
+import { updatePost, updatePostTags, checkToken } from "../util/apiCalls";
 import TagSelection from "../components/TagSelection";
 import { useState } from "react";
+
 
 const EditPostLayout = () => {
     const navigate = useNavigate();
@@ -10,12 +11,6 @@ const EditPostLayout = () => {
     // Check if authorised user
     const outletData = useOutletContext();
     const user = outletData.user;
-
-    const loader = async () => {
-      if (!user) {
-        return redirect("/");
-      }
-    };
 
     const params = useParams();
     const postsData = useLoaderData()['postData'][0];

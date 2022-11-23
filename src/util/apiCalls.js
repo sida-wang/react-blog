@@ -176,11 +176,10 @@ export async function loginUser(body) {
     }
 }
 
-export async function checkToken(body) {
+export async function checkToken(token) {
     const response = await fetch(`http://localhost:5000/auth/check`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+        method: "GET",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
     });
     if (response.ok) {
         return response.json();

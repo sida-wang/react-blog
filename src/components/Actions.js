@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { deletePostById, deleteTagById } from '../util/apiCalls';
-import { useParams, useNavigate, useOutletContext } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../App';
 import './Actions.css'
 
 const Actions = ({ type }) => {
-    const contextData = useOutletContext();
-    const token = contextData['token'];
+    const token = useAuth()['token'];
     const params = useParams(); 
 
     const navigate = useNavigate(); 

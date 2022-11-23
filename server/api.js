@@ -2,7 +2,12 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const pool = require("./db");
-const cors = require("cors")
+const cors = require("cors");
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+
+//get config vars
+dotenv.config();
 
 app.use(cors());
 app.use(express.json()); //gives access to req.body
@@ -19,6 +24,26 @@ function difference(setA, setB) {
     }
     return _difference;
   }
+
+function generateAccessToken(username) {
+    return jwt.sign(username, process.env.TOKEN_SECRET)
+}
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null) return res.sendStatus(401)
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        //console.log(err)
+
+        if (err) return res.sendStatus(403)
+
+        req.user = user
+
+        next()
+    })
+}
 
 //ROUTES
 
@@ -204,8 +229,11 @@ app.post("/posts/linktags/:id", async(req, res) => {
 app.post("/auth/login", async(req, res) => {
     try {
         const {password: password} = req.body;
-        if (password === "Password") {
-            res.json({result: "Success", token: "generated_token"});
+        const queryText = "SELECT * FROM users WHERE username = 'sida' and password = crypt($1, password)"
+        const jsonData = await pool.query(queryText, [password]);
+        const user = await jsonData.rows[0];
+        if (user) {
+            res.json({result: "Success", token: generateAccessToken(user.username)});
         }
         else {
             res.json({result: "Incorrect password"});
@@ -216,15 +244,9 @@ app.post("/auth/login", async(req, res) => {
     }
 });
 
-app.post("/auth/check", async(req, res) => {
+app.get("/auth/check", authenticateToken, async(req, res) => {
     try {
-        const {token: token} = req.body;
-        if (token === "generated_token") {
-            res.json({result: "Success"});
-        }
-        else {
-            res.json({result: "Invalid token"});
-        }
+        res.json({result: "Success"});
     } catch (err) {
         console.error(err.message);
         res.send(err.message);

@@ -17,6 +17,7 @@ import NewTagLayout from './pages/NewTagLayout';
 import TagsLayout from './pages/TagsLayout';
 import EditTagLayout from './pages/EditTagLayout'
 import AdminLayout from './pages/AdminLayout'
+import ProtectedRoute from './components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -35,12 +36,14 @@ const router = createBrowserRouter([
       },
       {
         path: "newpost",
-        element: <NewPostLayout />,
+        element: <ProtectedRoute><NewPostLayout /></ProtectedRoute>,
         loader: NewPostsLoader,
       },
       {
         path: "newtag",
-        element: <NewTagLayout />,
+        element: <ProtectedRoute>
+          <NewTagLayout />
+        </ProtectedRoute>,
       },
       {
         path: "tags/:id",
@@ -80,7 +83,9 @@ const router = createBrowserRouter([
               },
               {
                 path: "edit",
-                element: <EditPostLayout />,
+                element: <ProtectedRoute>
+                  <EditPostLayout />
+                </ProtectedRoute>,
                 loader: EditPostLoader,
               }
             ]

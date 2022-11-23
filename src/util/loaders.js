@@ -1,4 +1,6 @@
 import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag, getTagsByPostId } from "./apiCalls"; 
+import { AuthContext } from "../App";
+import { useContext } from "react";
 import { redirect } from "react-router-dom";
 import { getSuggestedQuery } from "@testing-library/react";
 
@@ -47,6 +49,4 @@ export async function NewPostsLoader() {
     let ret = {};
     ret['tags'] = await getTagsAll();
     return ret
-    //const user = await getUser();
-    // return redirect("/");
 }
