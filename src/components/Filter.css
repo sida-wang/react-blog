@@ -7,5 +7,6 @@
 .filter-item {
     flex: 1;
     width: 70%;
-    margin: 3px
+    margin: 3px;
+    max-width: 250px;
 }

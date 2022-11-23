@@ -1,12 +1,13 @@
 .main-body {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: minmax(200px, 25vw) minmax(500px, 50vw) 30px;
   min-height: calc(95vh - 176px);
 }
 
 .App {
   background-color: #EAE7DC;
   min-height: 100vh;
+  overflow:auto;
 }
 
 main {
@@ -16,18 +17,3 @@ main {
   margin-bottom: 20px;
 }
 
-.text-red {
-  color: #E85A4F;
-}
-
-.text-grey {
-  color: #8E8D8A;
-}
-
-.text-dark-grey {
-  color: #404040;
-}
-
-a:hover {
-  color: black;
-}

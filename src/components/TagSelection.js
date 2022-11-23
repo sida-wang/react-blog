@@ -12,7 +12,7 @@ const TagSelection = ({ tags, selected, setSelected }) => {
         <div className="tag-selector-bar pt-3">
           <h4 className="px-3 mb-2 flex-item">Tags</h4>
           <ToggleButtonGroup type="checkbox" defaultValue={selected} onChange={onChangeCB} vertical={true} className="px-3 mb-2 flex-item">
-              {tags.map((tag) => (<ToggleButton id={`btn-tag-${tag.id}`} value={tag.id} key={tag.id} className="text-black" variant='outline-secondary'>{tag.title}</ToggleButton>))}  
+              {tags.map((tag) => (<ToggleButton id={`btn-tag-${tag.id}`} value={tag.id} key={tag.id} className="text-black border border-secondary border-1" variant='outline-warning'>{tag.title}</ToggleButton>))}  
           </ToggleButtonGroup>     
         </div> 
   )

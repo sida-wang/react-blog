@@ -7,34 +7,9 @@
 .actions-item {
     flex: 1;
     width: 70%;
+    max-width: 250px;
 }
 
-.bg-salmon {
-    background-color: #E98074;
-    color: black;
-}
-
-.bg-salmon:hover, .bg-salmon:active {
-    background-color: #e98074cc;
-    color: black;
-}
-
-.bg-red {
-    background-color: #E85A4F;
-    color: black;
-}
-
-.bg-red:hover, .bg-red:active {
-    background-color: #e8594fcc;
-    color: black;
-}
-
-.bg-grey {
-    background-color: #8E8D8A;
-    color: black;
-}
-
-.bg-grey:hover, .bg-grey:active {
-    background-color: #8E8D8Acc;
-    color: black;
+.btn {
+    word-wrap: break-word;
 }

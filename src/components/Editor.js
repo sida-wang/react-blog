@@ -46,8 +46,8 @@ const Editor = ({ defaultFormData, onSubmitHandler, type}) => {
                 </article>
             </Form.Group>
             <div className='buttons'>
-            <Button type="submit" className="btn bg-red m-1 border border-0" >Submit</Button>
-            <Button type="button" onClick={() => navigate(-1)} className="btn bg-grey m-1 border border-0" >Cancel</Button>
+            <Button type="submit" className="btn btn-warning m-1 " >Submit</Button>
+            <Button type="button" onClick={() => navigate(-1)} className="btn btn-secondary m-1 " >Cancel</Button>
             </div>
         </Form>
   )
