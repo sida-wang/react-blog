@@ -160,3 +160,32 @@ export async function updatePostTags(id, body) {
         console.log( response.status, response.statusText);
     }
 }
+
+
+export async function loginUser(body) {
+    const response = await fetch(`http://localhost:5000/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    });
+    if (response.ok) {
+        return response.json();
+    }
+    else {
+        console.log( response.status, response.statusText);
+    }
+}
+
+export async function checkToken(body) {
+    const response = await fetch(`http://localhost:5000/auth/check`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    });
+    if (response.ok) {
+        return response.json();
+    }
+    else {
+        console.log( response.status, response.statusText);
+    }
+}

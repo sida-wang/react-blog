@@ -200,3 +200,33 @@ app.post("/posts/linktags/:id", async(req, res) => {
         res.send(err.message);
     }
 });
+
+app.post("/auth/login", async(req, res) => {
+    try {
+        const {password: password} = req.body;
+        if (password === "Password") {
+            res.json({result: "Success", token: "generated_token"});
+        }
+        else {
+            res.json({result: "Incorrect password"});
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});
+
+app.post("/auth/check", async(req, res) => {
+    try {
+        const {token: token} = req.body;
+        if (token === "generated_token") {
+            res.json({result: "Success"});
+        }
+        else {
+            res.json({result: "Invalid token"});
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.send(err.message);
+    }
+});

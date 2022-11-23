@@ -1,4 +1,6 @@
 import { getPostsAll, getPostsById, getTagsAll, getTagsById, getPostsByTag, getTagsByPostId } from "./apiCalls"; 
+import { redirect } from "react-router-dom";
+import { getSuggestedQuery } from "@testing-library/react";
 
 //Loaders act as wrappers to marry loader inputs to api call inputs
 
@@ -45,4 +47,6 @@ export async function NewPostsLoader() {
     let ret = {};
     ret['tags'] = await getTagsAll();
     return ret
+    //const user = await getUser();
+    // return redirect("/");
 }

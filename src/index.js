@@ -16,7 +16,7 @@ import NewPostLayout from './pages/NewPostLayout';
 import NewTagLayout from './pages/NewTagLayout';
 import TagsLayout from './pages/TagsLayout';
 import EditTagLayout from './pages/EditTagLayout'
-import TagSelection from './components/TagSelection'
+import AdminLayout from './pages/AdminLayout'
 
 const router = createBrowserRouter([
   {
@@ -24,13 +24,14 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "test",
-      element: <TagSelection />,
-    },
       {
         path: "",
         element: <PostsLayout />,
         loader: allPostsLoader,
+      },
+      {
+        path: "admin",
+        element: <AdminLayout />,
       },
       {
         path: "newpost",

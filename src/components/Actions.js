@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { deletePostById, deleteTagById } from '../util/apiCalls';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useOutletContext } from 'react-router-dom';
 import './Actions.css'
 
 const Actions = ({ type }) => {
-
+    const contextData = useOutletContext();
+    const token = contextData['token'];
     const params = useParams(); 
 
     const navigate = useNavigate(); 
@@ -20,9 +21,12 @@ const Actions = ({ type }) => {
         navigate('/');
     }
 
+    if (!token) {
+        return
+    }
     if (type === "post") {
         return (
-            <div className='actions'>
+            <div className='actions mb-4'>
                 <Link to={`/newpost`} className = "btn btn-primary actions-item m-1 " role="button">New Post</Link>
                 <Link to={`edit`} className = "btn actions-item m-1 btn-warning " role="button">Edit Post</Link>
                 <Button className = "btn actions-item m-1 btn-secondary " onClick={onDeletePost}>Delete Post</Button>
@@ -31,7 +35,7 @@ const Actions = ({ type }) => {
     }
     if (type === "tag") {
         return (
-            <div className='actions'>
+            <div className='actions mb-4'>
                 <Link to={`/newtag`} className = "btn btn-primary actions-item m-1" role="button">New Tag</Link>
                 <Link to={`edit`} className = "btn actions-item m-1 btn-warning" role="button">Edit Tag</Link>
                 <Button className = "btn actions-item m-1 btn-secondary" onClick={onDeleteTag}>Delete Tag</Button>
@@ -39,7 +43,7 @@ const Actions = ({ type }) => {
         )
     }
     return (
-        <div className='actions'>
+        <div className='actions mb-4'>
             <Link to={`newpost`} className = "btn btn-primary actions-item m-1 " role="button">New Post</Link>
             <Link to={`newtag`} className = "btn btn-primary actions-item m-1 " role="button">New Tag</Link>
         </div>
