@@ -1,5 +1,5 @@
-//const host = "https://blog-api.sida.dev/"
-const host = "http://localhost:3001/"
+const host = "https://blog-api.sida.dev/"
+//const host = "http://localhost:3001/"
 
 export async function getPostsAll() {
     const response = await fetch(host + "posts/fetch/all");
