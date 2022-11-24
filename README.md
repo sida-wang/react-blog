@@ -14,6 +14,8 @@ The ability to create and edit tags has been setup but still needs the ability t
 Express API is mostly setup equipped to deal with CRUD requests as required, endpoints are still being created based on functionality required by the app. 
 
 ## Todo
+- Remove blur for non-overflowing posts
+- Add modal to delete button
 - API data checking to prevent insertion of blank data
 - Enable slug functionality
 - Deploy to personal website
