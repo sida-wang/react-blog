@@ -15,7 +15,6 @@ Express API is mostly setup equipped to deal with CRUD requests as required, end
 
 ## Todo
 - Remove blur for non-overflowing posts
-- Add modal to delete button
 - API data checking to prevent insertion of blank data
 - Enable slug functionality
 - Deploy to personal website
