@@ -1,13 +1,15 @@
 .main-body {
   display: grid;
   grid-template-columns: minmax(200px, 25vw) minmax(500px, 50vw) 30px;
-  min-height: calc(95vh - 176px);
+  flex: 1;
 }
 
 .App {
   background-color: #EAE7DC;
   min-height: 100vh;
   overflow:auto;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
