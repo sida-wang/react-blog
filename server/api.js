@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 3001;
 const pool = require("./db");
 const cors = require("cors");
 const dotenv = require('dotenv');
@@ -48,7 +48,7 @@ function authenticateToken(req, res, next) {
 //ROUTES
 
 //Create Post
-app.post("/posts/create", async(req, res) => {
+app.post("/posts/create", authenticateToken, async(req, res) => {
     try {
         const { title:title, markdown: markdown, slug:slug } = req.body;
         const queryText = 'INSERT INTO posts (title, content, slug, created_at, modified_at) VALUES($1, $2, $3, to_timestamp($4), to_timestamp($5)) RETURNING *';
@@ -101,7 +101,7 @@ app.get("/posts/fetch/bytag/:id", async(req, res) => {
 
 
 //Update Post
-app.put("/posts/update/:id", async(req, res) => {
+app.put("/posts/update/:id", authenticateToken, async(req, res) => {
     try {
         const { id: id } = req.params;
         const { title: title, markdown: markdown, slug: slug } = req.body;
@@ -115,7 +115,7 @@ app.put("/posts/update/:id", async(req, res) => {
 });
 
 //Delete Post
-app.delete("/posts/delete/:id", async(req, res) => {
+app.delete("/posts/delete/:id", authenticateToken, async(req, res) => {
     try {
         const { id: id } = req.params;
         const queryText = 'DELETE FROM posts WHERE id = $1 RETURNING *';
@@ -129,7 +129,7 @@ app.delete("/posts/delete/:id", async(req, res) => {
 
 //Tags stuff
 //Create Tag
-app.post("/tags/create", async(req, res) => {
+app.post("/tags/create", authenticateToken, async(req, res) => {
     try {
         const { title:title, metatitle: metatitle, slug:slug } = req.body;
         const queryText = 'INSERT INTO tags (title, meta_title, slug) VALUES($1, $2, $3) RETURNING *';
@@ -179,7 +179,7 @@ app.get("/tags/fetch/bypost/:id", async(req, res) => {
 
 
 //Update Tag
-app.put("/tags/update/:id", async(req, res) => {
+app.put("/tags/update/:id", authenticateToken, async(req, res) => {
     try {
         const { id: id } = req.params;
         const { title: title, metatitle: metatitle, slug: slug } = req.body;
@@ -194,7 +194,7 @@ app.put("/tags/update/:id", async(req, res) => {
 
 
 //Delete Tag
-app.delete("/tags/delete/:id", async(req, res) => {
+app.delete("/tags/delete/:id", authenticateToken, async(req, res) => {
     try {
         const { id: id } = req.params;
         const queryText = 'DELETE FROM tags WHERE id = $1 RETURNING *';
@@ -207,7 +207,7 @@ app.delete("/tags/delete/:id", async(req, res) => {
 });
 
 //Link tag to post
-app.post("/posts/linktags/:id", async(req, res) => {
+app.post("/posts/linktags/:id", authenticateToken, async(req, res) => {
     try {
         const{ id:id } = req.params;
         const { original:original, newtags: newtags} = req.body;

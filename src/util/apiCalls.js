@@ -1,5 +1,8 @@
+//const host = "https://blog-api.sida.dev/"
+const host = "http://localhost:3001/"
+
 export async function getPostsAll() {
-    const response = await fetch("http://localhost:5000/posts/fetch/all");
+    const response = await fetch(host + "posts/fetch/all");
     if (response.ok) { 
         return response.json();
     }
@@ -9,7 +12,7 @@ export async function getPostsAll() {
 }
 
 export async function getPostsById(id) {
-    const response = await fetch(`http://localhost:5000/posts/fetch/${id}`);
+    const response = await fetch(host + `posts/fetch/${id}`);
     if (response.ok) { 
         return response.json();
     }
@@ -19,7 +22,7 @@ export async function getPostsById(id) {
 }
 
 export async function getPostsByTag(id) {
-    const response = await fetch(`http://localhost:5000/posts/fetch/bytag/${id}`);
+    const response = await fetch(host + `posts/fetch/bytag/${id}`);
     if (response.ok) { 
         return response.json();
     }
@@ -28,8 +31,9 @@ export async function getPostsByTag(id) {
     }
 }
 
-export async function deletePostById(id) {
-      const response = await fetch(`http://localhost:5000/posts/delete/${id}`, {
+export async function deletePostById(token, id) {
+      const response = await fetch(host + `posts/delete/${id}`, {
+        headers: {"Authorization": `Bearer ${token}`},
         method: "DELETE"
       });
       if (response.ok) {
@@ -41,10 +45,10 @@ export async function deletePostById(id) {
       
   }
 
-export async function createPost(body) {
-        const response = await fetch("http://localhost:5000/posts/create", {
+export async function createPost(token, body) {
+        const response = await fetch(host + "posts/create", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${token}`},
                 body: JSON.stringify(body)
             });
         if (response.ok) {
@@ -55,10 +59,10 @@ export async function createPost(body) {
         }
 }
 
-export async function updatePost(id, body) {
-    const response = await fetch(`http://localhost:5000/posts/update/${id}`, {
+export async function updatePost(token, id, body) {
+    const response = await fetch(host + `posts/update/${id}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${token}`},
             body: JSON.stringify(body)
         });
     if (response.ok) {
@@ -71,10 +75,10 @@ export async function updatePost(id, body) {
 
 
 
-export async function createTag(body) {
-    const response = await fetch(`http://localhost:5000/tags/create`, {
+export async function createTag(token, body) {
+    const response = await fetch(host + `tags/create`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${token}`},
             body: JSON.stringify(body)
         });
     if (response.ok) {
@@ -87,7 +91,7 @@ export async function createTag(body) {
 
 
 export async function getTagsAll() {
-    const response = await fetch(`http://localhost:5000/tags/fetch`);
+    const response = await fetch(host + `tags/fetch`);
     if (response.ok) {
         return response.json();
     }
@@ -97,7 +101,7 @@ export async function getTagsAll() {
 }
 
 export async function getTagsById(id) {
-    const response = await fetch(`http://localhost:5000/tags/fetch/${id}`);
+    const response = await fetch(host + `tags/fetch/${id}`);
     if (response.ok) {
         return response.json();
     }
@@ -108,7 +112,7 @@ export async function getTagsById(id) {
 
 
 export async function getTagsByPostId(id) {
-    const response = await fetch(`http://localhost:5000/tags/fetch/bypost/${id}`);
+    const response = await fetch(host + `tags/fetch/bypost/${id}`);
     if (response.ok) {
         return response.json();
     }
@@ -117,10 +121,10 @@ export async function getTagsByPostId(id) {
     }
 }
 
-export async function updateTag(id, body) {
-    const response = await fetch(`http://localhost:5000/tags/update/${id}`, {
+export async function updateTag(token, id, body) {
+    const response = await fetch(host + `tags/update/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" , "Authorization": `Bearer ${token}`},
         body: JSON.stringify(body)
     });
     if (response.ok) {
@@ -132,9 +136,10 @@ export async function updateTag(id, body) {
 }
 
 
-export async function deleteTagById(id) {
-    const response = await fetch(`http://localhost:5000/tags/delete/${id}`, {
-      method: "DELETE"
+export async function deleteTagById(token, id) {
+    const response = await fetch(host + `tags/delete/${id}`, {
+        headers: {"Authorization": `Bearer ${token}`},
+        method: "DELETE"
     });
     if (response.ok) {
       console.log( 'Successfully deleted tag' );
@@ -146,10 +151,10 @@ export async function deleteTagById(id) {
 }
 
 
-export async function updatePostTags(id, body) {
-    const response = await fetch(`http://localhost:5000/posts/linktags/${id}`, {
+export async function updatePostTags(token, id, body) {
+    const response = await fetch(host + `posts/linktags/${id}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
         body: JSON.stringify(body)
     });
     if (response.ok) {
@@ -163,7 +168,7 @@ export async function updatePostTags(id, body) {
 
 
 export async function loginUser(body) {
-    const response = await fetch(`http://localhost:5000/auth/login`, {
+    const response = await fetch(host + `auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -177,7 +182,7 @@ export async function loginUser(body) {
 }
 
 export async function checkToken(token) {
-    const response = await fetch(`http://localhost:5000/auth/check`, {
+    const response = await fetch(host + `auth/check`, {
         method: "GET",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
     });

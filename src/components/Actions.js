@@ -12,12 +12,12 @@ const Actions = ({ type }) => {
     const navigate = useNavigate(); 
 
     const onDeletePost = async () => {
-        await deletePostById(params.id);
+        await deletePostById(token, params.id);
         navigate('/');
     }
 
     const onDeleteTag = async () => {
-        await deleteTagById(params.id);
+        await deleteTagById(token, params.id);
         navigate('/');
     }
 

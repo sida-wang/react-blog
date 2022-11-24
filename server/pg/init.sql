@@ -1,4 +1,4 @@
-CREATE DATABASE react-blog;
+CREATE DATABASE react_blog;
 
 CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
@@ -17,8 +17,8 @@ CREATE TABLE tags(
 );
 
 CREATE TABLE post_tags(
-    post_id INT REFERENCES posts,
-    tag_id INT REFERENCES tags
+    post_id INT REFERENCES posts ON DELETE CASCADE ON UPDATE CASCADE,
+    tag_id INT REFERENCES tags ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE users(
