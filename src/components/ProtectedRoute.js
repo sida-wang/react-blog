@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from '../App';
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
     const token = useAuth()['token'];
     const navigate = useNavigate();
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (!token) {
           navigate('/');
         } else {
