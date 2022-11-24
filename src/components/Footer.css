@@ -1,4 +1,16 @@
 .footer {
     background-color: #E98074;
-    min-height: 5vh;
+    min-height: 50px;
+    max-height: 5vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.grid-middle{
+    justify-self: center;
+}
+
+.grid-right{
+    justify-self: end;
 }
