@@ -1,5 +1,4 @@
-const host = "https://blog-api.sida.dev/"
-//const host = "http://localhost:3001/"
+const host = process.env.REACT_APP_API_HOST;
 
 export async function getPostsAll() {
     const response = await fetch(host + "posts/fetch/all");
