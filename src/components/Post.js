@@ -6,7 +6,7 @@ const Post = ({ id, title, text }) => {
   return (
     <article className='p-2 rounded post text-dark'>
         <h3>{title}</h3>
-        <ReactMarkdown children={text} className='text-wrap' remarkPlugins={[remarkGfm]} />
+        <ReactMarkdown children={text} className='text-wrap post-body' remarkPlugins={[remarkGfm]} />
     </article>
   )
 }
