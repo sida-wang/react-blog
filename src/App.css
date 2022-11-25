@@ -19,3 +19,14 @@ main {
   margin-bottom: 20px;
 }
 
+
+@media screen and (max-device-width: 750px){
+  .main-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    margin: 20px 10px;
+  }
+}

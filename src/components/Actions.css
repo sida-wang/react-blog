@@ -2,14 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 4px;
 }
 
 .actions-item {
     flex: 1;
     width: 70%;
     max-width: 250px;
+    margin: 0;
 }
 
 .btn {
     word-wrap: break-word;
 }
+
+@media screen and (max-device-width: 750px){
+    .actions {
+        flex-direction: row;
+        margin: 0 10px;
+    }
+
+  }

@@ -10,3 +10,11 @@
     margin: 3px;
     max-width: 250px;
 }
+
+@media screen and (max-device-width: 750px){
+    .filter {
+        flex-direction: row;
+        margin: 0 10px;
+        flex-wrap: wrap;
+    }
+  }
