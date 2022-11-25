@@ -7,7 +7,7 @@ const TagSelection = ({ tags, selected, setSelected }) => {
     setSelected(val);
     console.log(val);
   }
-  console.log('selected tags rerendered');
+
   return (
         <div className="tag-selector-bar pt-3">
           <h4 className="px-3 mb-2 flex-item">Tags</h4>
