@@ -9,7 +9,11 @@ const jwt = require('jsonwebtoken');
 //get config vars
 dotenv.config();
 
-app.use(cors());
+app.use(cors({
+            origin: ['http://localhost:3000', 'https://blog.sida.dev'],
+            methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+));
 app.use(express.json()); //gives access to req.body
 
 app.listen(port, () => {

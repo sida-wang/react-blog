@@ -30,9 +30,9 @@ const Actions = ({ type }) => {
     if (type === "post") {
         return (
             <div className='actions mb-4'>
-                <Link to={`/newpost`} className = "btn btn-primary actions-item m-1 " role="button">New Post</Link>
-                <Link to={`edit`} className = "btn actions-item m-1 btn-warning " role="button">Edit Post</Link>
-                <Button className = "btn actions-item m-1 btn-secondary " onClick={() => setShowModal(true)}>Delete Post</Button>
+                <Link to={`/newpost`} className = "btn btn-primary actions-item " role="button">New Post</Link>
+                <Link to={`edit`} className = "btn actions-item btn-warning " role="button">Edit Post</Link>
+                <Button className = "btn actions-item btn-secondary " onClick={() => setShowModal(true)}>Delete Post</Button>
 
                 <DeleteModal showModal={showModal} setShowModal={setShowModal} onDelete={onDeletePost}/>
             </div>
@@ -41,9 +41,9 @@ const Actions = ({ type }) => {
     if (type === "tag") {
         return (
             <div className='actions mb-4'>
-                <Link to={`/newtag`} className = "btn btn-primary actions-item m-1" role="button">New Tag</Link>
-                <Link to={`edit`} className = "btn actions-item m-1 btn-warning" role="button">Edit Tag</Link>
-                <Button className = "btn actions-item m-1 btn-secondary" onClick={() => setShowModal(true)}>Delete Tag</Button>
+                <Link to={`/newtag`} className = "btn btn-primary actions-item" role="button">New Tag</Link>
+                <Link to={`edit`} className = "btn actions-item btn-warning" role="button">Edit Tag</Link>
+                <Button className = "btn actions-item btn-secondary" onClick={() => setShowModal(true)}>Delete Tag</Button>
 
                 <DeleteModal showModal={showModal} setShowModal={setShowModal} onDelete={onDeleteTag}/>
             </div>
@@ -51,8 +51,8 @@ const Actions = ({ type }) => {
     }
     return (
         <div className='actions mb-4'>
-            <Link to={`newpost`} className = "btn btn-primary actions-item m-1 " role="button">New Post</Link>
-            <Link to={`newtag`} className = "btn btn-primary actions-item m-1 " role="button">New Tag</Link>
+            <Link to={`newpost`} className = "btn btn-primary actions-item " role="button">New Post</Link>
+            <Link to={`newtag`} className = "btn btn-primary actions-item " role="button">New Tag</Link>
         </div>
     )
     

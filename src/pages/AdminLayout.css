@@ -2,3 +2,10 @@
     display:grid;
     grid-template-rows: 1fr 2fr 2fr;
 }
+
+@media screen and (max-device-width: 750px){
+    .login {
+        margin: 0 30px;
+    }
+
+  }

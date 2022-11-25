@@ -4,13 +4,30 @@
     max-height: 5vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "none middle right";
     align-items: center;
+    width: 100%;
 }
 
 .grid-middle{
+    grid-area: middle;
     justify-self: center;
 }
 
 .grid-right{
+    grid-area: right;
     justify-self: end;
 }
+
+@media screen and (max-device-width: 750px){
+    .footer {
+        max-height: 10vh;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .grid-middle {
+        font-size: 1rem;
+        padding-left: 12px;
+    }
+  }

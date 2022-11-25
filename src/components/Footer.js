@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button';
 
 const Footer = () => {
   return (
-    <div className='footer'>
-    <div></div>
-    <h5 className='m-0 grid-middle'> &copy; 2022 Sida Wang </h5>
+    <footer className='footer'>
+    <></>
+    <div className='m-0 grid-middle h5'> &copy; 2022 Sida Wang </div>
     <Link to={"/admin"} className='grid-right px-3'>
-      <Button type="button" className="btn btn-secondary">Admin Dashboard
+      <Button type="button" className="btn btn-secondary">Admin
       </Button>
     </Link>
-    </div>
+    </footer>
   )
 }
 
