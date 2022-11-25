@@ -2,7 +2,7 @@ header {
     padding: 48px;
 }
 
-@media screen and (max-device-width: 600px){
+@media screen and (max-device-width: 750px){
     header {
         padding:20px;
     }
