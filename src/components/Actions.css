@@ -16,7 +16,7 @@
     word-wrap: break-word;
 }
 
-@media screen and (max-device-width: 750px){
+@media screen and (max-width: 750px){
     .actions {
         flex-direction: row;
         margin: 0 10px;

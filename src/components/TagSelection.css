@@ -13,7 +13,7 @@
 }
 
 
-@media screen and (max-device-width: 750px){
+@media screen and (max-width: 750px){
     .tag-selectors {
         display: flex;
         flex-direction: row;
