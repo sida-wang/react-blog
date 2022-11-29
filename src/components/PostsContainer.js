@@ -26,7 +26,7 @@ const PostsContainer = ({ postsData, type }) => {
   if (type === "post") {
   return (
     <main>
-      {posts.map((post) => (<Post id={post.id} title={post.title} text={post.content} key={post.id} />))}  
+      {posts.map((post) => (<Post key={post.id} post={post}/>))}  
     </main>
   )
   }
@@ -34,7 +34,7 @@ const PostsContainer = ({ postsData, type }) => {
     return (
       <main>
         {posts.map((post) => (<Link to={"/posts/"+post.id} key={post.id} className="text-decoration-none text-dark">
-                                <Post id={post.id} title={post.title} text={post.content}/>
+                                <Post key={post.id} post={post}/>
                               </Link>))}  
       </main>
     )
